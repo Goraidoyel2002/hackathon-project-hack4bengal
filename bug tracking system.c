@@ -1,21 +1,13 @@
-// C program for the
-// Bug Tracking System
-
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
-// Function to file the Bug into
-// the Bug Tracking System
 void filebug(int id)
 {
 	printf("**********");
 	printf("FILING A BUG");
 	printf("***********\n");
-
-	// Current Time
 	time_t CurrentTime;
 	time(&CurrentTime);
 
@@ -25,8 +17,6 @@ void filebug(int id)
 	int bugstatus;
 
 	FILE* ptr;
-
-	// User name
 	printf("Enter your name:\n");
 	scanf("%s", name);
 	char ids[10];
@@ -34,25 +24,16 @@ void filebug(int id)
 	strcat(name, ids);
 	char ex[] = ".txt";
 	strcat(name, ex);
-
-	// Filename of the Bug
 	printf("Filename :%s\n", name);
 	ptr = fopen(name, "w");
-
-	// Case when file cannot be created
 	if (ptr == NULL)
 		printf("cannot create file!!!\n");
 
 	fprintf(ptr, "DATE AND TIME : %s",
 			ctime(&CurrentTime));
 
-	// ID in the Text File
 	fprintf(ptr, "BUG ID : %d\n", id);
-
-	// Adding New Line in Text File
 	fprintf(ptr, "\n");
-
-	// Bug ID
 	printf("BUG ID:%d\n", id);
 
 	fprintf(ptr, "BUG FILED BY: %s\n",
@@ -179,33 +160,20 @@ void changestatus()
 	}
 	fclose(file);
 }
-
-// Function to report the Bug
-// in the Bug Tracking System
 void report()
 {
 	printf("**********");
 	printf("REPORT");
 	printf("**********\n");
-
 	FILE* fp;
 	char name[50];
-
-	// Asking the Filename to report
-	// the bug of the file
 	printf("Enter file name:\n");
 	scanf("%s", name);
 	char ex[] = ".txt";
 	strcat(name, ex);
-
-	// Opening the file into the
-	// Read mode
 	fp = fopen(name, "r");
-
 	char ch;
 	ch = getc(fp);
-
-	// Character of the File
 	while (ch != EOF) {
 		printf("%c", ch);
 		ch = getc(fp);
@@ -215,7 +183,6 @@ void report()
 	getch();
 }
 
-// Driver Code
 void main()
 {
 	printf("***************");
